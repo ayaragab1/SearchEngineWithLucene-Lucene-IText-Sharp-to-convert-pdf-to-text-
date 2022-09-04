@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SearchEngineWithLucene.Requests.BookVm>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+@foreach (var book in Model)
+{
+    <div class="card d-inline" style="width: 18rem;">
+        <div class="card-body ">
+            <h5 class="card-title">@book.Title</h5>
+            <p class="card-text">@book.Summary</p>
+            <a href="~/uploads/@book.FileUrl" asp-for="@book.FileUrl" download class="card-link">Download PDF</a>
+        </div>
+        <div>
+            <a asp-controller="Home" asp-action="SetBook" asp-route-id="@book.Id"  >Edit</a>
+            <a asp-controller="Home" asp-action="DeleteBook" asp-route-id="@book.Id">Delete</a>
+        </div>
+    </div>
+
+}
